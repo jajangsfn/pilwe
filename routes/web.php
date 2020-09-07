@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('/admin', 'AdminController@index');
+
+Route::get('/admin/rt', 'AdminController@rt');
+
+Route::get('/admin/warga', 'AdminController@warga');
+
+Route::get('/admin/pemilihan', 'AdminController@pemilihan');
+
+Route::get('/admin/calon', 'AdminController@calon');
+
+Route::get('/admin/bilik_suara', 'AdminController@bilik_suara');
