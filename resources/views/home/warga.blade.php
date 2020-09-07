@@ -12,9 +12,28 @@
     <div class="container-fluid">
         @yield('content')
         <div class="row">
-            <div class="card col-12">
+            <div class="col-12">
+            @if (Session::has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (Session::has('failed'))
+                <div class="alert alert-danger">
+                    {{ session('failed')}}
+                </div>
+            @endif
+            <div class="card">
                 <div class="card-header">
-                    Data Warga RW 004
+                    <div class="card-title">
+                        Data Warga RW 004 
+                    </div>
+                    <div class="card-tools">
+                        <a href="/warga/tambah" class="btn btn-success">
+                            <i class="fas fa-plus"></i> Warga
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -44,12 +63,16 @@
                                         <td><?=$row->rt?></td>
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-warning btn-sm" title="Edit">
-                                                    <i class="fas fa-pen text-light"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm" title="Delete">
-                                                    <i class="fas fa-trash text-light"></i>
-                                                </button>
+                                                <a href="/warga/edit/<?=$row->id?>">
+                                                    <button type="button" class="btn btn-warning btn-sm" title="Edit">
+                                                        <i class="fas fa-pen text-light"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="/warga/delete/<?=$row->id?>" onclick="return confirm('Anda yakin ingin menghapus data ini?')">
+                                                    <button type="button" class="btn btn-danger btn-sm" title="Delete">
+                                                        <i class="fas fa-trash text-light"></i>
+                                                    </button>
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>
@@ -59,6 +82,7 @@
                         </table>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div><!-- /.container-fluid -->

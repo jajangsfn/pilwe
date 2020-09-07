@@ -24,9 +24,13 @@
 <script src="{{ asset('lte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('lte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 
+<!-- select2 -->
+<script src="{{ asset('lte/plugins/select2/js/select2.min.js') }}"></script>
+
 <script>
     $(function () {
       $(".mytable").DataTable();
+      $(".select2").select2();
     });
 </script>
 </body>

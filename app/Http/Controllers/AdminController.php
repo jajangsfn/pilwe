@@ -38,12 +38,13 @@ class AdminController extends Controller
         return view('home/calon', ['calon'=> $calon]);
     }
     public function warga() {
+
         $warga = DB::table("warga")
                  ->join("rt", "rt.id", "=", "warga.id_rt")
                  ->leftJoin("jenis_pendidikan", "jenis_pendidikan.id", "=", "warga.id_pendidikan_terakhir")
                  ->select("warga.*", "rt.rt","jenis_pendidikan.nama as pendidikan_terakhir")
                  ->get();
-        // echo json_encode($warga);exit;
+        
         return view('home/warga', ['warga' => $warga]);
     }
 
