@@ -64,11 +64,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/calon" class="nav-link">
+            <a href="/admin/calon" class="nav-link <?= url()->current() == 'admin/calon' ? 'active':'';?>">
               <i class="nav-icon fas fa-user"></i>
               <p>
-                Calon
-                <span class="right badge badge-danger">New</span>
+                Calon 
               </p>
             </a>
           </li>
