@@ -4,12 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class AdminController extends Controller
 {
-    //
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index() {
+        
+
         $pemilihan = DB::table("pemilihan")->select("*")->get()->count();
         $warga = DB::table("warga")->select("*")->get()->count();
         $calon = DB::table("calon")->select("*")->get()->count();
@@ -43,6 +51,7 @@ class AdminController extends Controller
                  ->join("rt", "rt.id", "=", "warga.id_rt")
                  ->leftJoin("jenis_pendidikan", "jenis_pendidikan.id", "=", "warga.id_pendidikan_terakhir")
                  ->select("warga.*", "rt.rt","jenis_pendidikan.nama as pendidikan_terakhir")
+                 ->orderBy("warga.updated_date", "desc")
                  ->get();
         
         return view('home/warga', ['warga' => $warga]);

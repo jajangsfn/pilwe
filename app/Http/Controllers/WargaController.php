@@ -8,7 +8,11 @@ use Illuminate\Support\Facades\DB;
 class WargaController extends Controller
 {
     //
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function tambah_warga() {
 
         $rt = DB::table("rt")
@@ -23,18 +27,54 @@ class WargaController extends Controller
     }
 
     public function simpan_warga(Request $request) {
-        // menyimpan data file yang diupload ke variabel $file
-        $file = $request->file('foto');
-        if ($file) {
-            // echo json_encode($request);exi;
-            $foto = $file->getClientOriginalName();
-                // isi dengan nama folder tempat kemana file diupload
-            $tujuan_upload = 'attachments';
-    
-            // upload file
-            $move = $file->move($tujuan_upload,$file->getClientOriginalName());
+        date_default_timezone_set('Asia/Jakarta');
 
-            if ($move) {
+        // cek NIK
+        $cek_nik = DB::table("warga")->where('nik', $request->nik)->count();
+        
+        if ($cek_nik > 0) {
+            $tipe_pesan = 'failed';
+            $pesan      = 'Nik telah terdaftar!';
+        }else {
+            // menyimpan data file yang diupload ke variabel $file
+            $file = $request->file('foto');
+            if ($file) {
+                // echo json_encode($request);exi;
+                $foto = $file->getClientOriginalName();
+                    // isi dengan nama folder tempat kemana file diupload
+                $tujuan_upload = 'attachments';
+        
+                // upload file
+                $move = $file->move($tujuan_upload,$file->getClientOriginalName());
+
+                if ($move) {
+                    $warga= DB::table("warga")->insert(
+                        [   "nik" => $request->nik,
+                            "nama" => $request->nama,
+                            "tempat_lahir" => $request->tempat_lahir,
+                            "tanggal_lahir" => $request->tanggal_lahir,
+                            "id_rt" => $request->rt,
+                            "id_pendidikan_terakhir" => $request->pendidikan,
+                            "foto" => $foto,
+                            "flag" => 1,
+                            "created_date" => date('Y-m-d H:i:s'),
+                            "updated_date" => date('Y-m-d H:i:s'),
+                        ]
+                    );
+            
+                    if ($warga) {
+                        $tipe_pesan = 'success';
+                        $pesan      = 'Data Warga berhasil ditambahkan!';
+                    }else {
+                        $tipe_pesan = 'failed';
+                        $pesan      = 'Data Warga gagal ditambahkan!';
+                    }
+                }else {
+                    $tipe_pesan = 'failed';
+                    $pesan      = 'Data Foto Warga gagal diunggah!';
+                }
+
+            }else {
                 $warga= DB::table("warga")->insert(
                     [   "nik" => $request->nik,
                         "nama" => $request->nama,
@@ -42,7 +82,6 @@ class WargaController extends Controller
                         "tanggal_lahir" => $request->tanggal_lahir,
                         "id_rt" => $request->rt,
                         "id_pendidikan_terakhir" => $request->pendidikan,
-                        "foto" => $foto
                     ]
                 );
         
@@ -53,32 +92,10 @@ class WargaController extends Controller
                     $tipe_pesan = 'failed';
                     $pesan      = 'Data Warga gagal ditambahkan!';
                 }
-            }else {
-                $tipe_pesan = 'failed';
-                $pesan      = 'Data Foto Warga gagal diunggah!';
-            }
-
-        }else {
-            $warga= DB::table("warga")->insert(
-                [   "nik" => $request->nik,
-                    "nama" => $request->nama,
-                    "tempat_lahir" => $request->tempat_lahir,
-                    "tanggal_lahir" => $request->tanggal_lahir,
-                    "id_rt" => $request->rt,
-                    "id_pendidikan_terakhir" => $request->pendidikan,
-                ]
-            );
-    
-            if ($warga) {
-                $tipe_pesan = 'success';
-                $pesan      = 'Data Warga berhasil ditambahkan!';
-            }else {
-                $tipe_pesan = 'failed';
-                $pesan      = 'Data Warga gagal ditambahkan!';
             }
         }
 
-        return redirect('/warga/tambah')->with($tipe_pesan, $pesan);
+        return redirect('/rt/tambah')->with($tipe_pesan, $pesan);
     }
 
     public function edit_warga($id)
@@ -103,6 +120,7 @@ class WargaController extends Controller
     }
 
     public function update_warga(Request $request) {
+        date_default_timezone_set('Asia/Jakarta');
         // menyimpan data file yang diupload ke variabel $file
         $file = $request->file('foto');
         
@@ -123,7 +141,9 @@ class WargaController extends Controller
                         "tanggal_lahir" => $request->tanggal_lahir,
                         "id_rt" => $request->rt,
                         "id_pendidikan_terakhir" => $request->pendidikan,
-                        "foto" => $foto
+                        "foto" => $foto,
+                        "flag" => 1,
+                        "updated_date" => date('Y-m-d H:i:s'),
                     ]
                 );
         
@@ -147,6 +167,8 @@ class WargaController extends Controller
                     "tanggal_lahir" => $request->tanggal_lahir,
                     "id_rt" => $request->rt,
                     "id_pendidikan_terakhir" => $request->pendidikan,
+                    "flag" => 1,
+                    "updated_date" => date('Y-m-d H:i:s'),
                 ]
             );
     

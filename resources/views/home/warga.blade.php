@@ -40,13 +40,14 @@
                         <table class="table table-bordered table-condensed table-striped mytable">
                             <thead>
                                 <tr>
-                                    <th width="1">No</th>
-                                    <th>NIK</th>
-                                    <th>Nama</th>
-                                    <th>Tempat lahir</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Pendidikan Terakhir</th>
-                                    <th>RT</th>
+                                    <th width="1" class="text-center">No</th>
+                                    <th class="text-center">NIK</th>
+                                    <th class="text-center">Nama</th>
+                                    <th class="text-center">Tempat lahir</th>
+                                    <th class="text-center">Tanggal Lahir</th>
+                                    <th class="text-center">Pendidikan Terakhir</th>
+                                    <th class="text-center">RT</th>
+                                    <th class="text-center">Foto</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -61,6 +62,13 @@
                                         <td><?=$row->tanggal_lahir?></td>
                                         <td><?=$row->pendidikan_terakhir?></td>
                                         <td><?=$row->rt?></td>
+                                        <td>
+                                            <?php
+                                            if ($row->foto && file_exists("attachments/" . $row->foto)) { ?>
+                                                <img src="{{ URL::to('/') }}/attachments/{{ $row->foto }}" width="80"/>
+                                            <?php }
+                                            ?>
+                                        </td>
                                         <td>
                                             <div class="btn-group">
                                                 <a href="/warga/edit/<?=$row->id?>">

@@ -25,7 +25,7 @@
                   {{ session('failed')}}
                </div>
           @endif
-            <form method="post" action="/warga/insert" enctype="multipart/form-data" class="card">
+            <form method="post" action="/warga/simpan" enctype="multipart/form-data" class="card">
             {{ csrf_field() }}
               <div class="card-header">
                 Form Tambah Warga
@@ -93,7 +93,7 @@
                            <label>Pendidikan</label>
                         </div>
                         <div class="col-8">
-                          <select name="pendidikan" class="form-control" >
+                          <select name="pendidikan" class="form-control" required>
                             <option value="">Pilih Pendidikan</option>
                             <?php
                               foreach($pendidikan as $key => $row) { ?>

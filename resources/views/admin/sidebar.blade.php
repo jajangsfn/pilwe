@@ -15,7 +15,7 @@
           <img src="{{ asset('lte/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"> {{ Auth::user()->name }}</a>
         </div>
       </div>
 
@@ -56,7 +56,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/pemilihan" class="nav-link">
+            <a href="/pemilihan" class="nav-link">
               <i class="nav-icon fas fa-chart-line"></i>
               <p>
                 Pemilihan
@@ -88,7 +88,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="/admin/bilik_suara" class="nav-link">
+            <a href="/admin/bilik" class="nav-link">
               <i class="nav-icon fas fa-person-booth"></i>
               <p>
                 Bilik Suara

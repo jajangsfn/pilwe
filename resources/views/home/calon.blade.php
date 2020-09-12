@@ -12,51 +12,83 @@
     <div class="container-fluid">
         @yield('content')
         <div class="row">
-            <div class="card col-12">
-                <div class="card-header">
-                    Data Calon Ketua RW 004
+            <div class="col-12">
+            @if (Session::has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-condensed table-striped mytable">
-                            <thead>
-                                <tr>
-                                    <th width="1">No</th>
-                                    <th>NIK</th>
-                                    <th>Nama</th>
-                                    <th>Tempat lahir</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>Pendidikan Terakhir</th>
-                                    <th>RT</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach($calon as $key => $row) { ?>
+            @endif
+
+            @if (Session::has('failed'))
+                <div class="alert alert-danger">
+                    {{ session('failed')}}
+                </div>
+            @endif
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            Data Calon Ketua RW 
+                        </div>
+                        <div class="card-tools">
+                            <a href="/calon/tambah" class="btn btn-success">
+                                <i class="fas fa-plus"></i> Calon
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-condensed table-striped mytable">
+                                <thead>
                                     <tr>
-                                        <td class="text-center"><?=$key+1?></td>
-                                        <td><?=$row->nik?></td>
-                                        <td><?=$row->nama?></td>
-                                        <td><?=$row->tempat_lahir?></td>
-                                        <td><?=$row->tanggal_lahir?></td>
-                                        <td><?=$row->pendidikan_terakhir?></td>
-                                        <td><?=$row->rt?></td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-warning btn-sm" title="Edit">
-                                                    <i class="fas fa-pen text-light"></i>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-sm" title="Delete">
-                                                    <i class="fas fa-trash text-light"></i>
-                                                </button>
-                                            </div>
-                                        </td>
+                                        <th width="1">No</th>
+                                        <th>NIK</th>
+                                        <th>Nama</th>
+                                        <th>Tempat lahir</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Pendidikan Terakhir</th>
+                                        <th>Asal RT</th>
+                                        <th>
+                                        <th></th>
                                     </tr>
-                                <?php }
-                                ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach($calon as $key => $row) { ?>
+                                        <tr>
+                                            <td class="text-center"><?=$key+1?></td>
+                                            <td><?=$row->nik?></td>
+                                            <td><?=$row->nama?></td>
+                                            <td><?=$row->tempat_lahir?></td>
+                                            <td><?=$row->tanggal_lahir?></td>
+                                            <td><?=$row->pendidikan_terakhir?></td>
+                                            <td><?=$row->rt?></td>
+                                            <td>
+                                                <a href="/calon/visi_misi/<?=$row->id?>">
+                                                    <button type="button" name="visimisi" class="btn btn-primary btn-xs">
+                                                        Visi & misi
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a href="/calon/edit/<?=$row->id?>">
+                                                        <button type="button" class="btn btn-warning btn-sm" title="Edit">
+                                                            <i class="fas fa-pen text-light"></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href="/calon/delete/<?=$row->id?>" onclick="return confirm('Anda yakin?')">
+                                                        <button type="button" class="btn btn-danger btn-sm" title="Delete">
+                                                            <i class="fas fa-trash text-light"></i>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
