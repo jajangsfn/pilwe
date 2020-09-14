@@ -61,7 +61,7 @@ class PemilihanController extends Controller
         if ($tempatkan) {
             echo json_encode(1);
             // send notify
-            event(new MyNotify('success','new'));
+            event(new MyNotify('tempatkan','new'));
         }else {
             echo json_encode(0);
         }

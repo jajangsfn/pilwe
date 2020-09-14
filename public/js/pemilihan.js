@@ -6,7 +6,6 @@ $(function() {
     // notify
     // Enable pusher logging - don't include this in production
     // Pusher.logToConsole = true;
-
     var pusher = new Pusher('79d45b5260ec23a92671', {
         cluster: 'ap1'
     });
@@ -37,7 +36,11 @@ $(function() {
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         }
-        toastr["success"](data.message + ' selesai memilih!')
+        
+        if (data.type == 'success') {
+            toastr["success"](data.message + ' selesai memilih!')
+        }
+
 
         // load pemilih
         load_pemilih();

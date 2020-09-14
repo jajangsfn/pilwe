@@ -36,7 +36,10 @@ $(function() {
             "showMethod": "fadeIn",
             "hideMethod": "fadeOut"
         }
-        toastr["success"](data.message + ' selesai memilih!')
+
+        if (data.type  == 'success') {
+            toastr["success"](data.message + ' selesai memilih!')
+        }
 
         // load pemilih
         get_pemilih();
