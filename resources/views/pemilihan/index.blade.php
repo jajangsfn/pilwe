@@ -14,7 +14,7 @@
             <div class="col-12">
                 <div class="card">  
                     <div class="card-header">
-                        Data Pemilih
+                        Form Pemilihan
                     </div>          
                     <div class="card-body">
                         <div class="row">
@@ -62,7 +62,7 @@
             <!-- <div class="col-12"> -->
                 <?php
                 foreach($bilik as $key => $row) { ?>
-                    <div class="col-4 col-3">
+                    <div class="col-4 col-6">
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title">

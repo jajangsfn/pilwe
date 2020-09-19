@@ -64,6 +64,15 @@
                     <div class="col-6">
                       <div class="row">
                         <div class="col-3">
+                          <label>Jenis Kelamin</label>
+                        </div>
+                        <div class="col-8">
+                          <input type="radio" name="jenkel" value="L" <?=($warga) && $warga->jenis_kelamin == "L" ? "checked" : "";?>> Laki - laki
+                          <input type="radio" name="jenkel" value="P" <?=($warga) && $warga->jenis_kelamin == "P" ? "checked" : "";?>> Perempuan
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-3">
                            <label>RT</label>
                         </div>
                         <div class="col-8">

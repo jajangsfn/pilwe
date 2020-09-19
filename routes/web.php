@@ -72,10 +72,6 @@ Route::get('/admin/calon', 'AdminController@calon');
 Route::get('calon/tambah', 'CalonController@tambah_calon');
 // insert calon
 Route::post('calon/simpan', 'CalonController@simpan_calon');
-// edit calon
-Route::get('calon/edit/{id}', 'CalonController@edit_calon');
-// update calon
-Route::post('calon/update', 'CalonController@update_calon');
 // delete calon
 Route::get('calon/delete/{id}', 'CalonController@delete_calon');
 // data visimisi
@@ -103,6 +99,15 @@ Route::post('bilik/update', 'BilikController@update_bilik');
 Route::get('bilik/delete/{id}', 'BilikController@delete_bilik');
 
 
+//data saksi 
+Route::get('admin/saksi', 'AdminController@saksi');
+// add saksi
+Route::get('saksi/tambah', 'SaksiController@tambah_saksi');
+// insert saksi
+Route::post('saksi/simpan', 'SaksiController@simpan_saksi');
+// delete saksi
+Route::get('saksi/delete/{id}', 'SaksiController@delete_saksi');
+
 // realtime vote
 Route::get('vote/voting/{bilik}', 'VoteController@index');
 // get realtime pemilih
@@ -113,10 +118,23 @@ Route::get('vote/get_calon/', 'VoteController@get_calon');
 Route::get('vote/vote_calon/{id_pemilih}/{id_calon}', 'VoteController@vote_calon');
 // Realtime perhitungan 
 Route::get('quick/quick_count', 'QuickCountController@quick_count');
+// realtime perhitungan
+Route::get("quick/realtime", 'QuickCountController@realtime_count');
+// final result
+Route::get("quick/final", 'QuickCountController@final_count');
+// system
+Route::get('system', 'SystemController@index');
+// update system
+Route::post('system/update', 'SystemController@update');
+// menu reset system 
+Route::get('system/reset', 'SystemController@reset');
+// hapus seluruh data pemilih system
+Route::get('system/truncate/{type}', 'SystemController@truncate_data');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+// report
+Route::get('report/', 'ReportController@index');
+// report print
+Route::get('report/print/{type}', 'ReportController@print');
 
 Auth::routes();
 

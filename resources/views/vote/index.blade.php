@@ -27,21 +27,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 <body class="hold-transition container h-100">
-    <div class="row mt-5 w-100">
-        <div class="col-lg-12 text-right">
+    <div class="row mt-3 w-100">
+        <div class="col-lg-12 text-center">
+            <h3>Surat Suara Elektronik Pemilihan Calon Ketua RW 004 Dusun Cijaringao</h3>
+            <h3>Desa Cihanjuang Kecamatan Cimanggung Kabupaten Sumedang</h3>
+            <h3>2020</h3>
+        </div>
+    </div>
+    <div class="row mt-2 w-100">
+        <div class="col-lg-12">
             <div class="card card-info">
                 <div class="card-header">
-                    <!-- <div class="card-title"> -->
-                        <label id="nama_pemilih"></label>
+
+                    <!-- <div class="text-left"> -->
+                        
                     <!-- </div> -->
-                    <input type="hidden" name="bilik" id="bilik" value="<?=$bilik?>"/>
-                    <input type="hidden" name="id_pemilihan" id="id_pemilihan"/>
+                    <div class="row">
+                        <div class="col-3">
+                            <label id="clock">Pukul : 12:24 WIB</label>
+                        </div>
+                        <div class="col-9 text-right">
+                            <label id="nama_pemilih"></label>
+                            <input type="hidden" name="bilik" id="bilik" value="<?=$bilik?>"/>
+                            <input type="hidden" name="id_pemilihan" id="id_pemilihan"/>
+                        </div>      
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row mt-5 h-100 justify-content-center align-self-center w-100 landing_page_calon" id="landing_page_calon"></div> 
+    <div class="row mt-2 h-100 justify-content-center align-self-center w-100 landing_page_calon" id="landing_page_calon"></div> 
 </body>
 <!-- jQuery -->
 <script src="{{ asset('lte/plugins/jquery/jquery.min.js') }}"></script>
@@ -54,7 +70,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 <!-- toaster notify -->
 <script src="{{ asset('lte/plugins/toastr/toastr.min.js') }}"></script>
+<!-- realtime clock -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.28.0/moment.min.js"></script>
+<script src="{{ asset('js/clock.js') }}"></script>
 <!-- realtime vote -->
 <script src="{{ asset('js/realtime.js') }}"></script>
-</body>
 </html>

@@ -65,8 +65,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   </style>
 </head>
-<body>
-<h1>Hasil Quick Count</h1>
+<body class="container">
+<h1 class="text-center">Quick Count</h1>
+<input type="hidden" id="continue" value="1"/>
+<button class="btn btn-primary" onclick="realtime()" id="start_btn">Start</button>
 <figure class="highcharts-figure">
     <div id="container"></div>
     <p class="highcharts-description">
@@ -84,67 +86,102 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script>
-Highcharts.chart('container', {
-    chart: {
-        type: 'bar'
-    },
-    title: {
-        text: 'Hasil Quick Count Pemilihan Ketua RW 004'
-    },
-    subtitle: {
-        text: 'Source: Panitia Pemilihan RW 004'
-    },
-    xAxis: {
-        categories: ['Perolehan Suara'],
-        title: {
-            text: null
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Total Pemilih',
-            align: 'high'
-        },
-        labels: {
-            overflow: 'justify'
-        }
-    },
-    tooltip: {
-        valueSuffix: ' millions'
-    },
-    plotOptions: {
-        bar: {
-            dataLabels: {
-                enabled: true
+function realtime() {
+    var next_counting = $("#continue").val();
+    
+    if (next_counting == "1") {
+        setInterval(() => {
+            get_chart_data();
+        }, <?=$system->limit_quick_count * 1000?>);    
+    }
+    
+}
+
+function get_chart_data() {
+    var chart_data = [];
+
+    $.ajax({
+        url:"/quick/realtime",
+        type:"get",
+        datatype:"json",
+        success:function(data){
+            var result = JSON.parse(data);
+            var next_counting = result.continue;
+            chart_data = result.chart;
+            
+            // set continue
+            $("#continue").val(next_counting);
+            
+            if (next_counting) {
+                 // Create the chart
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Hasil Perolehan Suara Pemilihan Ketua RW 004'
+                    },
+                    subtitle: {
+                        text: ''
+                    },
+                    accessibility: {
+                        announceNewData: {
+                            enabled: true
+                        }
+                    },
+                    xAxis: {
+                        type: 'category'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Total Pemilih'
+                        }
+
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        series: {
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y:f}',
+                                style: {
+                                    fontSize:18,
+                                    fontWeight:"bold",
+                                }
+                            }
+                        }
+                    },
+
+                    tooltip: {
+                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:f}</b><br/>'
+                    },
+
+                    series: [
+                        {
+                            name: "Total Suara",
+                            colorByPoint: true,
+                            data: chart_data,
+                            style:{
+                                fontSize: 20,
+                                fontWeight:"bold",
+                            }
+                        }
+                    ],
+                });
+            }else {
+                // hide tombol start
+                $("#start_btn").addClass("d-none");
             }
+            
+           
         }
-    },
-    legend: {
-        layout: 'horizontal',
-        align: 'right',
-        verticalAlign: 'top',
-        x: -40,
-        y: 80,
-        floating: true,
-        borderWidth: 1,
-        backgroundColor:
-            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-        shadow: true
-    },
-    credits: {
-        enabled: false
-    },
-    series: [{
-        name: 'Budi Siswoyo',
-        data: [107]
-    }, {
-        name: 'Oman',
-        data: [133]
-    }, {
-        name: 'Ade',
-        data: [81]
-    }]
-});
+    });
+    
+        
+    }
 </script>
 

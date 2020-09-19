@@ -57,6 +57,7 @@ function get_pemilih()
         datatype:"json",
         success:function(hasil) {
             var jSon = JSON.parse(hasil);
+            console.log(jSon);
             if (jSon) {
                 $.each(jSon, function(idx, row){
                     
@@ -64,6 +65,8 @@ function get_pemilih()
                         $("#id_pemilihan").val(row[0].id_pemilihan);
                         $("#nama_pemilih").html("Hallo, "+row[0].nama);
                         get_calon(); 
+                    }else {
+                        clear_box();
                     }
                 });
             }
@@ -81,6 +84,7 @@ function get_calon() {
             var jSon = JSON.parse(hasil);
             var id_pemilih = $("#id_pemilihan").val();
             
+            $("#landing_page_calon").html('');
             $.each(jSon, function(idx, row) {
                 
                 if (row.length > 0) {
@@ -93,11 +97,11 @@ function get_calon() {
                         }
                             $("#landing_page_calon")
                                 .append("<div class='col-lg-4 col-4 mx-auto' onclick='vote_calon("+id_pemilih+","+data.id+")'>"
-                                            +"<div class='card text-center'>"
-                                                +"<div class='card-header'><h2>"+(id+1)+"</h2></div>"
+                                            +"<div class='card card-custom text-center'>"
+                                                +"<div class='card-header'><h1>"+(id+1)+"</h1></div>"
                                                 +img 
-                                                +"<div class='card-body'>"
-                                                    +"<h3 id='nama_calon_"+data.id+"'>"+data.nama+"</h3>"
+                                                +"<div class='card-body text-center text-uppercase'>"
+                                                    +"<h4 id='nama_calon_"+data.id+"'>"+data.nama+"</h4>"
                                                 +"</div>"
                                             +"</div>"
                                         +"</div>");
@@ -131,13 +135,19 @@ function vote_calon(id_pemilih, id_calon)
                     success:function(hasil) {
                         
                         if (hasil == 1){
-                            Swal.fire(
-                                'Terpilih!',
-                                'Terima kasih untuk tidak golput',
-                                'success'
+
+                                Swal.fire(
+                                    {
+                                        title:'Terpilih!',
+                                        text:'Terima kasih untuk tidak golput',
+                                        type:'success',
+                                        timer:2000
+                                    }
                                 );
-                                clear_box();
-                                get_pemilih();
+                                
+                            clear_box();
+                            get_pemilih();
+
                         }else {
                             Swal.fire(
                                 'Gagal!',
@@ -154,5 +164,7 @@ function vote_calon(id_pemilih, id_calon)
 function clear_box()
 {
     $("#landing_page_calon").html('');
+    $("#id_pemilihan").val('');
+    $("#nama_pemilih").html("Hallo, ");
 }
 

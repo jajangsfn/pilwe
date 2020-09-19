@@ -50,9 +50,15 @@ class VoteController extends Controller
             ]
         );
 
-        $get_pemilih = DB::table("warga")
+        // get id pemilih
+        $id_warga = DB::table("pemilihan")
+                    ->select("id_warga")
+                    ->where("id", $id_pemilih)->first();
+
+        //get pemilih
+        $get_pemilih = DB::table("warga") 
                         ->select("nama")
-                        ->where("id", $id_pemilih)->first();
+                        ->where("id", $id_warga->id_warga)->first();
 
         if ($vote) {
             echo json_encode(1);

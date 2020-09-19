@@ -1,7 +1,7 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : local
  Source Server Type    : MySQL
  Source Server Version : 100411
  Source Host           : localhost:3306
@@ -11,7 +11,7 @@
  Target Server Version : 100411
  File Encoding         : 65001
 
- Date: 14/09/2020 08:48:08
+ Date: 18/09/2020 22:04:49
 */
 
 SET NAMES utf8mb4;
@@ -28,7 +28,7 @@ CREATE TABLE `bilik_suara`  (
   `created_date` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   `updated_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of bilik_suara
@@ -49,7 +49,7 @@ CREATE TABLE `calon`  (
   `created_date` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   `updated_date` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of calon
@@ -57,20 +57,6 @@ CREATE TABLE `calon`  (
 INSERT INTO `calon` VALUES (7, 29, NULL, '1', '2020-09-08 23:01:08', '2020-09-08 23:01:08');
 INSERT INTO `calon` VALUES (8, 30, NULL, '1', '2020-09-09 00:13:22', '2020-09-09 00:13:22');
 INSERT INTO `calon` VALUES (9, 3, NULL, '1', '2020-09-09 09:33:53', '2020-09-09 09:33:53');
-
--- ----------------------------
--- Table structure for failed_jobs
--- ----------------------------
-DROP TABLE IF EXISTS `failed_jobs`;
-CREATE TABLE `failed_jobs`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp(0) NOT NULL DEFAULT current_timestamp(0),
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for jenis_pendidikan
@@ -146,17 +132,6 @@ INSERT INTO `misi` VALUES (11, 'seperti itu', 7, '1', '2020-09-09 00:13:08', '20
 INSERT INTO `misi` VALUES (12, 'semarak 45', 8, '1', '2020-09-09 00:14:13', '2020-09-09 00:14:13');
 
 -- ----------------------------
--- Table structure for model_wargas
--- ----------------------------
-DROP TABLE IF EXISTS `model_wargas`;
-CREATE TABLE `model_wargas`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
 -- Table structure for pemilihan
 -- ----------------------------
 DROP TABLE IF EXISTS `pemilihan`;
@@ -171,36 +146,22 @@ CREATE TABLE `pemilihan`  (
   `created_date` datetime(0) NULL DEFAULT NULL,
   `updated_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 28 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of pemilihan
 -- ----------------------------
-INSERT INTO `pemilihan` VALUES (1, 1, 3, 2, '2020-09-12 09:43:54', '1', NULL, '2020-09-12 09:43:46', '2020-09-12 09:43:54');
-INSERT INTO `pemilihan` VALUES (2, 3, 3, 2, '2020-09-12 09:44:38', '1', NULL, '2020-09-12 09:44:11', '2020-09-12 09:44:38');
-INSERT INTO `pemilihan` VALUES (3, 5, 3, 2, '2020-09-12 09:45:21', '1', NULL, '2020-09-12 09:45:13', '2020-09-12 09:45:21');
-INSERT INTO `pemilihan` VALUES (4, 4, 3, 2, '2020-09-12 09:46:04', '1', NULL, '2020-09-12 09:45:50', '2020-09-12 09:46:04');
-INSERT INTO `pemilihan` VALUES (5, 7, 29, 2, '2020-09-12 09:46:30', '1', NULL, '2020-09-12 09:46:21', '2020-09-12 09:46:30');
-INSERT INTO `pemilihan` VALUES (6, 6, 30, 2, '2020-09-12 09:51:42', '1', NULL, '2020-09-12 09:51:23', '2020-09-12 09:51:42');
-INSERT INTO `pemilihan` VALUES (7, 10, 29, 2, '2020-09-12 09:54:46', '1', NULL, '2020-09-12 09:54:37', '2020-09-12 09:54:46');
-INSERT INTO `pemilihan` VALUES (8, 8, 3, 2, '2020-09-12 09:55:22', '1', NULL, '2020-09-12 09:55:04', '2020-09-12 09:55:22');
-INSERT INTO `pemilihan` VALUES (9, 9, 3, 2, '2020-09-12 09:55:53', '1', NULL, '2020-09-12 09:55:34', '2020-09-12 09:55:53');
-INSERT INTO `pemilihan` VALUES (10, 11, 29, 2, '2020-09-12 10:03:30', '1', NULL, '2020-09-12 10:03:16', '2020-09-12 10:03:30');
-INSERT INTO `pemilihan` VALUES (11, 14, 30, 2, '2020-09-12 10:09:59', '1', NULL, '2020-09-12 10:09:45', '2020-09-12 10:09:59');
-INSERT INTO `pemilihan` VALUES (12, 12, 3, 2, '2020-09-12 10:11:00', '1', NULL, '2020-09-12 10:10:54', '2020-09-12 10:11:00');
-INSERT INTO `pemilihan` VALUES (13, 13, 30, 2, '2020-09-12 10:14:26', '1', NULL, '2020-09-12 10:14:10', '2020-09-12 10:14:26');
-INSERT INTO `pemilihan` VALUES (14, 16, 3, 2, '2020-09-12 10:15:02', '1', NULL, '2020-09-12 10:14:47', '2020-09-12 10:15:02');
-INSERT INTO `pemilihan` VALUES (15, 29, 30, 2, '2020-09-13 03:13:27', '1', NULL, '2020-09-12 10:21:42', '2020-09-13 03:13:27');
-INSERT INTO `pemilihan` VALUES (16, 15, 30, 1, '2020-09-13 03:04:20', '1', NULL, '2020-09-12 10:21:52', '2020-09-13 03:04:20');
-INSERT INTO `pemilihan` VALUES (18, 17, 3, 1, '2020-09-13 03:04:40', '1', NULL, '2020-09-12 10:22:20', '2020-09-13 03:04:40');
-INSERT INTO `pemilihan` VALUES (19, 18, 3, 2, '2020-09-13 03:14:59', '1', NULL, '2020-09-13 03:13:38', '2020-09-13 03:14:59');
-INSERT INTO `pemilihan` VALUES (20, 19, 3, 2, '2020-09-13 03:15:18', '1', NULL, '2020-09-13 03:14:46', '2020-09-13 03:15:18');
-INSERT INTO `pemilihan` VALUES (21, 20, 3, 2, '2020-09-13 03:16:38', '1', NULL, '2020-09-13 03:16:27', '2020-09-13 03:16:38');
-INSERT INTO `pemilihan` VALUES (22, 21, 3, 2, '2020-09-13 03:20:07', '1', NULL, '2020-09-13 03:20:00', '2020-09-13 03:20:07');
-INSERT INTO `pemilihan` VALUES (23, 23, 30, 2, '2020-09-13 03:20:28', '1', NULL, '2020-09-13 03:20:18', '2020-09-13 03:20:28');
-INSERT INTO `pemilihan` VALUES (25, 22, 29, 1, '2020-09-13 03:31:42', '1', NULL, '2020-09-13 03:31:32', '2020-09-13 03:31:42');
-INSERT INTO `pemilihan` VALUES (26, 25, 29, 1, '2020-09-13 03:32:30', '1', NULL, '2020-09-13 03:32:18', '2020-09-13 03:32:30');
-INSERT INTO `pemilihan` VALUES (27, 30, 30, 1, '2020-09-13 03:33:23', '1', NULL, '2020-09-13 03:32:58', '2020-09-13 03:33:23');
+INSERT INTO `pemilihan` VALUES (1, 1, 29, 1, '2020-09-18 01:17:35', '1', '1', '2020-09-18 01:17:24', '2020-09-18 01:17:35');
+INSERT INTO `pemilihan` VALUES (2, 3, 29, 1, '2020-09-18 02:13:03', '1', '1', '2020-09-18 02:12:57', '2020-09-18 02:13:03');
+INSERT INTO `pemilihan` VALUES (3, 4, 30, 1, '2020-09-18 02:13:25', '1', '1', '2020-09-18 02:13:15', '2020-09-18 02:13:25');
+INSERT INTO `pemilihan` VALUES (4, 5, 3, 1, '2020-09-18 02:13:50', '1', '1', '2020-09-18 02:13:44', '2020-09-18 02:13:50');
+INSERT INTO `pemilihan` VALUES (5, 6, 29, 1, '2020-09-18 02:14:17', '1', '1', '2020-09-18 02:14:08', '2020-09-18 02:14:17');
+INSERT INTO `pemilihan` VALUES (6, 7, 30, 1, '2020-09-18 13:16:57', '1', '1', '2020-09-18 13:13:59', '2020-09-18 13:16:57');
+INSERT INTO `pemilihan` VALUES (7, 8, 30, 1, '2020-09-18 13:18:48', '1', '1', '2020-09-18 13:18:42', '2020-09-18 13:18:48');
+INSERT INTO `pemilihan` VALUES (8, 9, 3, 1, '2020-09-18 13:19:26', '1', '1', '2020-09-18 13:19:21', '2020-09-18 13:19:26');
+INSERT INTO `pemilihan` VALUES (9, 10, 29, 1, '2020-09-18 13:19:48', '1', '1', '2020-09-18 13:19:42', '2020-09-18 13:19:48');
+INSERT INTO `pemilihan` VALUES (10, 11, 29, 1, '2020-09-18 13:20:16', '1', '1', '2020-09-18 13:20:11', '2020-09-18 13:20:16');
+INSERT INTO `pemilihan` VALUES (11, 32, 29, 1, '2020-09-18 13:21:54', '1', '1', '2020-09-18 13:21:47', '2020-09-18 13:21:54');
 
 -- ----------------------------
 -- Table structure for rt
@@ -213,14 +174,14 @@ CREATE TABLE `rt`  (
   `created_date` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   `updated_date` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rt
 -- ----------------------------
 INSERT INTO `rt` VALUES (1, '001', '1', NULL, NULL);
 INSERT INTO `rt` VALUES (2, '002', '1', NULL, NULL);
-INSERT INTO `rt` VALUES (6, '003', '1', '2020-09-08 01:05:42', '2020-09-08 01:05:42');
+INSERT INTO `rt` VALUES (7, '003', '1', '2020-09-18 10:07:43', '2020-09-18 03:07:43');
 
 -- ----------------------------
 -- Table structure for saksi
@@ -234,31 +195,33 @@ CREATE TABLE `saksi`  (
   `created_date` datetime(0) NULL DEFAULT NULL,
   `updated_date` datetime(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of saksi
 -- ----------------------------
-INSERT INTO `saksi` VALUES (1, 7, 1, '1', '2020-09-07 06:31:34', '2020-09-07 06:31:34');
-INSERT INTO `saksi` VALUES (2, 23, 2, '1', '2020-09-07 06:31:34', '2020-09-07 06:31:34');
-INSERT INTO `saksi` VALUES (3, 2, 3, '1', '2020-09-07 06:31:34', '2020-09-07 06:31:34');
+INSERT INTO `saksi` VALUES (2, 20, 7, '1', '2020-09-18 14:01:01', '2020-09-18 14:01:01');
+INSERT INTO `saksi` VALUES (3, 7, 8, '1', '2020-09-18 14:01:14', '2020-09-18 14:01:14');
+INSERT INTO `saksi` VALUES (4, 14, 9, '1', '2020-09-18 14:01:29', '2020-09-18 14:01:29');
 
 -- ----------------------------
--- Table structure for user
+-- Table structure for system
 -- ----------------------------
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user`  (
+DROP TABLE IF EXISTS `system`;
+CREATE TABLE `system`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `password` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `id_warga` int(11) NULL DEFAULT NULL,
-  `level` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `is_active` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `flag` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `created_date` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
-  `updated_date` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
+  `system_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `version` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `demo` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `limit_counting` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+  `limit_quick_count` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '5',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of system
+-- ----------------------------
+INSERT INTO `system` VALUES (1, 'PilWe', '0.1', '1', '2', '5');
 
 -- ----------------------------
 -- Table structure for users
@@ -329,13 +292,13 @@ CREATE TABLE `warga`  (
   `created_date` datetime(0) NULL DEFAULT NULL,
   `updated_date` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 31 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of warga
 -- ----------------------------
-INSERT INTO `warga` VALUES (1, '1234', 'A', 'Sumedang', '1988-01-01', 1, 'IMG_1738.PNG', 1, '1', '2020-09-07 06:25:41', '2020-09-08 06:26:01');
-INSERT INTO `warga` VALUES (3, '1236', 'EMAN SULAEMAN', 'Sumedang', '1990-09-20', 2, '', 1, '1', '2020-09-07 06:25:41', '2020-09-12 16:43:09');
+INSERT INTO `warga` VALUES (1, '111123', 'A', 'Sumedang', '1988-01-01', 1, 'IMG_1738.PNG', 1, '1', '2020-09-07 06:25:41', '2020-09-18 09:24:42');
+INSERT INTO `warga` VALUES (3, '1236', 'PRABOWO SUBIANTO', 'Sumedang', '1990-09-20', 2, 'prabowo.jpg', 1, '1', '2020-09-07 06:25:41', '2020-09-17 17:45:02');
 INSERT INTO `warga` VALUES (4, '1237', 'D', 'Bandung', '1978-01-01', 2, '', 1, '1', '2020-09-07 06:25:41', '2020-09-07 06:25:41');
 INSERT INTO `warga` VALUES (5, '1238', 'E', 'Bandung', '1978-01-01', 3, '', 1, '1', '2020-09-07 06:25:41', '2020-09-07 06:25:41');
 INSERT INTO `warga` VALUES (6, '1239', 'F', 'Sumedang', '1978-01-01', 1, '', 1, '1', '2020-09-07 06:25:41', '2020-09-07 06:25:41');
@@ -358,18 +321,9 @@ INSERT INTO `warga` VALUES (22, '1255', 'V', 'Bandung', '1978-01-01', 2, '', 1, 
 INSERT INTO `warga` VALUES (23, '1256', 'W', 'Bandung', '1978-01-01', 2, '', 1, '1', '2020-09-07 06:25:41', '2020-09-07 06:25:41');
 INSERT INTO `warga` VALUES (24, '1257', 'X', 'Bandung', '1995-01-01', 3, '', 1, '1', '2020-09-07 06:25:41', '2020-09-07 06:25:41');
 INSERT INTO `warga` VALUES (25, '1258', 'Y', 'Sumedang', '1978-01-01', 1, '', 1, '1', '2020-09-07 06:25:41', '2020-09-07 06:25:41');
-INSERT INTO `warga` VALUES (29, '1283949484994', 'Herman Dzumafo', 'sumedang', '1994-12-01', 2, 'IMG_1738.PNG', 3, '1', '2020-09-08 06:19:36', '2020-09-09 18:01:52');
-INSERT INTO `warga` VALUES (30, '29203939', 'duma', 'sumedang', '2020-09-08', 2, 'chadengle.jpg', 2, '1', NULL, '2020-09-09 18:13:19');
-
--- ----------------------------
--- Table structure for wargas
--- ----------------------------
-DROP TABLE IF EXISTS `wargas`;
-CREATE TABLE `wargas`  (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp(0) NULL DEFAULT NULL,
-  `updated_at` timestamp(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+INSERT INTO `warga` VALUES (29, '1283949484994', 'BJ HABIBIE', 'sumedang', '1994-12-01', 2, 'bj habiebie.jpg', 3, '1', '2020-09-08 06:19:36', '2020-09-17 17:45:43');
+INSERT INTO `warga` VALUES (30, '29203939', 'JOKO WIDODO', 'sumedang', '2020-09-08', 2, 'Joko-Widodo.jpg', 2, '1', NULL, '2020-09-17 17:45:18');
+INSERT INTO `warga` VALUES (31, '1111111111111111', 'ABCDE', 'SUMEDANG', '2020-09-18', 1, NULL, 1, '1', NULL, '2020-09-18 19:06:40');
+INSERT INTO `warga` VALUES (32, '12312312312312', 'ABCDEF', 'SUMEDANG', '2020-09-18', 1, NULL, 1, NULL, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Support\Facades\DB;
 class LoginController extends Controller
 {
     /*
@@ -20,6 +20,7 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    // use Illuminate\Support\Facades\DB;
 
     /**
      * Where to redirect users after login.
@@ -39,6 +40,8 @@ class LoginController extends Controller
     }
 
     public function index() {
+        $system = DB::table("system")->get();
+        echo json_encode($system);exit;
         return view('auth/index');
     }
 }

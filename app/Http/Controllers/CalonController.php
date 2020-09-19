@@ -47,14 +47,6 @@ class CalonController extends Controller
         return redirect('calon/tambah')->with($tipe_pesan, $pesan);
     }
 
-    public function edit_calon($id) {
-        return view('calon/edit');
-    }
-
-    public function update_calon(Request $request) {
-
-    }
-
     public function delete_calon($id) {
         // menghapus data calon berdasarkan id yang dipilih
         DB::table('calon')->where('id', $id)-> delete();

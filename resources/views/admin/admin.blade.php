@@ -30,36 +30,38 @@
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
+           <!-- ./col -->
+           <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3><?=$dashboard['belum_memilih']?></h3>
+
+                <p>Data Warga yg Belum Memilih</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+              <div class="small-box-footer"></div>
+              <!-- <a href="#" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a> -->
+            </div>
+          </div>
+          <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3><?=$dashboard['pemilihan']?></h3>
+                <h3><?=$dashboard['sudah_memilih']?></h3>
 
-                <p>Data Pemilihan</p>
+                <p>Data Warga Sudah Memilih</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
               </div>
-              <a href="/admin/pemilihan" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+              <div class="small-box-footer"></div>
+              <!-- <a href="#" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3><?=$dashboard['calon']?></h3>
-
-                <p>Data Calon</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="/admin/calon" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-warning">
@@ -71,25 +73,27 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="/admin/warga" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a>
+              <div class="small-box-footer"></div>
+              <!-- <a href="/admin/warga" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-danger">
+            <div class="small-box bg-success">
               <div class="inner">
-                <h3><?=$dashboard['rt']?></h3>
+                <h3><?=$dashboard['calon']?></h3>
 
-                <p>Data RT</p>
+                <p>Data Calon Ketua RW</p>
               </div>
               <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+                <i class="ion ion-stats-bars"></i>
               </div>
-              <a href="/admin/rt" class="small-box-footer">Lihat Detail<i class="fas fa-arrow-circle-right"></i></a>
+              <div class="small-box-footer"></div>
+              <!-- <a href="/admin/calon" class="small-box-footer">Lihat Detail <i class="fas fa-arrow-circle-right"></i></a> -->
             </div>
           </div>
-          <!-- ./col -->
+          <!-- ./col --> 
         </div>
         <!-- /.row -->
         <!-- /.row -->

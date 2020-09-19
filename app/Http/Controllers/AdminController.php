@@ -18,15 +18,27 @@ class AdminController extends Controller
     public function index() {
         
 
-        $pemilihan = DB::table("pemilihan")->select("*")->get()->count();
+        
+        $belum_memilih = DB::table("warga")
+                         ->leftJoin("pemilihan", "pemilihan.id_warga", "warga.id") 
+                         ->whereRaw("pemilihan.id_warga is null")
+                         ->select("*")
+                         ->get()->count();
+
+        $sudah_memilih = DB::table("warga")
+                        ->join("pemilihan", "pemilihan.id_warga", "warga.id") 
+                        ->select("*")
+                        ->get()->count();
+
         $warga = DB::table("warga")->select("*")->get()->count();
         $calon = DB::table("calon")->select("*")->get()->count();
-        $rt = DB::table("rt")->select("*")->get()->count();
         
-        $dashboard = array("pemilihan" => $pemilihan,
+        
+        $dashboard = array("sudah_memilih" => $sudah_memilih,
+                            "belum_memilih" => $belum_memilih,
                             "warga" => $warga,
                             "calon" => $calon,
-                            "rt" => $rt);
+                        );
 
         return view('admin/admin', ['dashboard' => $dashboard]);
     }
@@ -51,10 +63,21 @@ class AdminController extends Controller
                  ->join("rt", "rt.id", "=", "warga.id_rt")
                  ->leftJoin("jenis_pendidikan", "jenis_pendidikan.id", "=", "warga.id_pendidikan_terakhir")
                  ->select("warga.*", "rt.rt","jenis_pendidikan.nama as pendidikan_terakhir")
-                 ->orderBy("warga.updated_date", "desc")
+                 ->orderBy("warga.nik","asc","warga.nama","asc")
                  ->get();
         
         return view('home/warga', ['warga' => $warga]);
+    }
+
+    public function saksi() {
+        $saksi  = DB::table("saksi")
+                  ->leftJoin("warga", "warga.id","saksi.id_saksi")
+                  ->leftJoin("calon","calon.id","saksi.id_calon")
+                  ->leftJoin("warga as warga_", "warga_.id","calon.id_warga")
+                  ->select("saksi.*","warga.nik","warga.nama as nama_saksi","warga_.nama as nama_calon")
+                  ->get();
+        
+        return view('home/saksi', ['saksi' => $saksi]);
     }
 
     public function rt() {

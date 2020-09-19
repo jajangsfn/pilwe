@@ -45,7 +45,7 @@
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tempat lahir</th>
                                     <th class="text-center">Tanggal Lahir</th>
-                                    <th class="text-center">Pendidikan Terakhir</th>
+                                    <th class="text-center">Jenis Kelamin</th>
                                     <th class="text-center">RT</th>
                                     <th class="text-center">Foto</th>
                                     <th></th>
@@ -60,7 +60,7 @@
                                         <td><?=$row->nama?></td>
                                         <td><?=$row->tempat_lahir?></td>
                                         <td><?=$row->tanggal_lahir?></td>
-                                        <td><?=$row->pendidikan_terakhir?></td>
+                                        <td><?=$row->jenis_kelamin == "L" ? "Laki - laki" : "Perempuan"?></td>
                                         <td><?=$row->rt?></td>
                                         <td>
                                             <?php

@@ -1,8 +1,6 @@
 $(function() {
     load_pemilih();
     get_pemilih();
-
-
     // notify
     // Enable pusher logging - don't include this in production
     // Pusher.logToConsole = true;

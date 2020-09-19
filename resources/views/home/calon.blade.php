@@ -71,11 +71,6 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <a href="/calon/edit/<?=$row->id?>">
-                                                        <button type="button" class="btn btn-warning btn-sm" title="Edit">
-                                                            <i class="fas fa-pen text-light"></i>
-                                                        </button>
-                                                    </a>
                                                     <a href="/calon/delete/<?=$row->id?>" onclick="return confirm('Anda yakin?')">
                                                         <button type="button" class="btn btn-danger btn-sm" title="Delete">
                                                             <i class="fas fa-trash text-light"></i>

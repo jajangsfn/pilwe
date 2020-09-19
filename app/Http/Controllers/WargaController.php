@@ -55,6 +55,7 @@ class WargaController extends Controller
                             "tanggal_lahir" => $request->tanggal_lahir,
                             "id_rt" => $request->rt,
                             "id_pendidikan_terakhir" => $request->pendidikan,
+                            "jenis_kelamin" => $request->jenkel,
                             "foto" => $foto,
                             "flag" => 1,
                             "created_date" => date('Y-m-d H:i:s'),
@@ -82,6 +83,10 @@ class WargaController extends Controller
                         "tanggal_lahir" => $request->tanggal_lahir,
                         "id_rt" => $request->rt,
                         "id_pendidikan_terakhir" => $request->pendidikan,
+                        "jenis_kelamin" => $request->jenkel,
+                        "flag" => 1,
+                        "created_date" => date('Y-m-d H:i:s'),
+                        "updated_date" => date('Y-m-d H:i:s'),
                     ]
                 );
         
@@ -95,7 +100,7 @@ class WargaController extends Controller
             }
         }
 
-        return redirect('/rt/tambah')->with($tipe_pesan, $pesan);
+        return redirect('/warga/tambah')->with($tipe_pesan, $pesan);
     }
 
     public function edit_warga($id)
@@ -141,8 +146,8 @@ class WargaController extends Controller
                         "tanggal_lahir" => $request->tanggal_lahir,
                         "id_rt" => $request->rt,
                         "id_pendidikan_terakhir" => $request->pendidikan,
+                        "jenis_kelamin" => $request->jenkel,
                         "foto" => $foto,
-                        "flag" => 1,
                         "updated_date" => date('Y-m-d H:i:s'),
                     ]
                 );
@@ -167,7 +172,7 @@ class WargaController extends Controller
                     "tanggal_lahir" => $request->tanggal_lahir,
                     "id_rt" => $request->rt,
                     "id_pendidikan_terakhir" => $request->pendidikan,
-                    "flag" => 1,
+                    "jenis_kelamin" => $request->jenkel,
                     "updated_date" => date('Y-m-d H:i:s'),
                 ]
             );

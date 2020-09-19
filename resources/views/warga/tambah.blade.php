@@ -47,7 +47,7 @@
                           <label>NIK</label>
                         </div>
                         <div class="col-8">
-                          <input type="number" name="nik" class="form-control" required placeholder="NIK/KTP Warga" autocomplete="off"/>
+                          <input type="number" name="nik" class="form-control" minlength="16" maxlength="16" required placeholder="NIK/KTP Warga" autocomplete="off"/>
                         </div>
                       </div>
 
@@ -72,6 +72,15 @@
                     </div>
 
                     <div class="col-6">
+                      <div class="row">
+                        <div class="col-3">
+                          <label>Jenis Kelamin</label>
+                        </div>
+                        <div class="col-8">
+                          <input type="radio" name="jenkel" value="L" checked> Laki - laki
+                          <input type="radio" name="jenkel" value="P"> Perempuan
+                        </div>
+                      </div>
                       <div class="row">
                         <div class="col-3">
                            <label>RT</label>
